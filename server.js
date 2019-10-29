@@ -69,12 +69,18 @@ app.post("/compare", (req, res) => {
     const result2 = convertDNAtoASCII(string2);
     const compareResult = lcs(result1, result2);
 
-    const results = {result1, result2, compareResult};
+    const results = { result1, result2, compareResult };
 
     res.send(results);
   } else {
     // Function to send back rna
-    res.send(convertRNAtoASCII(string2));
+    const result1 = convertRNAtoASCII(string1);
+    const result2 = convertRNAtoASCII(string2);
+    const compareResult = lcs(result1, result2);
+
+    const results = { result1, result2, compareResult };
+
+    res.send(results);
   }
 });
 
