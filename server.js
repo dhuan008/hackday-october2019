@@ -7,10 +7,10 @@ const winston = require("./config/winston");
 
 // import util
 // const { convertDNAtoASCII, convertRNAtoASCII } = require('./util/toASCII');
-const convertDNAtoASCII = require('./util/toASCII')['convertDNAToASCII'];
-const convertRNAtoASCII = require('./util/toASCII')['convertRNAToASCII'];
+const convertDNAtoASCII = require('./util/toASCII').convertDNAToASCII;
+const convertRNAtoASCII = require('./util/toASCII').convertRNAToASCII;
 
-const lcs = require('./util/LCS')['findLongestCommonSubstring'];
+const lcs = require('./util/LCS');
 
 const app = express();
 
