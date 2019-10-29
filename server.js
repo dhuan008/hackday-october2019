@@ -60,28 +60,23 @@ app.post("/dna", (req, res) => {
 // Route for comparing DNA/RNA strings
 app.post("/compare", (req, res) => {
   const { type, string1, string2 } = req.body;
-
+  let result1, result2;
   console.log('DNA called!');
 
   if (type === "dna") {
-    // Function to send back dna
-    const result1 = convertDNAtoASCII(string1);
-    const result2 = convertDNAtoASCII(string2);
-    const compareResult = lcs(result1, result2);
-
-    const results = { result1, result2, compareResult };
-
-    res.send(results);
+    // Set Results as DNA
+    result1 = convertDNAtoASCII(string1);
+    result2 = convertDNAtoASCII(string2);
   } else {
-    // Function to send back rna
-    const result1 = convertRNAtoASCII(string1);
-    const result2 = convertRNAtoASCII(string2);
-    const compareResult = lcs(result1, result2);
-
-    const results = { result1, result2, compareResult };
-
-    res.send(results);
+    // Set Results as RNA
+    result1 = convertRNAtoASCII(string1);
+    result2 = convertRNAtoASCII(string2);
   }
+  const compareResult = lcs(result1, result2);
+
+  const results = { result1, result2, compareResult };
+
+  res.send(results);
 });
 
 app.listen(PORT, () => {
