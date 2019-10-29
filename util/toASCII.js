@@ -1,35 +1,41 @@
 const convertDNAToASCII = (word) => {
 
   // hold toASCII function results
-  var ASCIIArr = [];
+  const ASCIIArr = [];
+
   // converts characters in string to ASCII
-  function toASCII(input) {
-    for (var i = 0; i < input.length; i++) {
-        var ascii = input.charCodeAt(i);
+  const toASCII = input => {
+    for (let i = 0; i < input.length; i++) {
+        const ascii = input.charCodeAt(i);
         ASCIIArr.push(ascii);
     }
     // console.log(ASCIIArr);
     return ASCIIArr;
   }
+
   // testing toASCII function
-  var ASCII = toASCII(word);
+  const ASCII = toASCII(word);
   // console.log(ASCII);
+  
   // holds toBinary function results
-  var binaryArr = [];
+  const binaryArr = [];
+
   // converts ASCII to binary
-  function toBinary(input) {
-    for (var i = 0; i < input.length; i++) {
-        var binary = input[i].toString(2);
+  const toBinary = input => {
+    for (let i = 0; i < input.length; i++) {
+        const binary = input[i].toString(2);
         binaryArr.push(binary);
         // console.log(binaryArr);
     }
     return binaryArr;
   }
+
   // test toBinary function
   toBinary(ASCIIArr);
+
   // format each binary result from binaryArr
-  function checkEven(input) {
-    for (var i = 0; i < input.length; i++) {
+  const checkEven = input => {
+    for (let i = 0; i < input.length; i++) {
         if (input[i].length % 2 !== 0) {
             input[i] = '0' + input[i];
         }
@@ -37,16 +43,20 @@ const convertDNAToASCII = (word) => {
     // console.log(input);
     return input;
   }
+
   // test checkEven function
   // console.log(binaryArr);
   checkEven(binaryArr);
+
   // combine all binary conversions for each character into one binary
-  var Binary1 = binaryArr.join("");
+  const Binary1 = binaryArr.join("");
   // console.log(Binary1);
-  // holds the results of splitIntoTwo function
+
+  // holds the results of splitIntoTwos function
   const bitsArr = [];
+
   // split binary number into two bit elements
-  function splitIntoTwo(str) {
+  const splitIntoTwos = str => {
     // End cases
     if (str.length <= 0) {
         return null;
@@ -55,14 +65,15 @@ const convertDNAToASCII = (word) => {
     bitsArr.push(str.slice(-2));
     //
     let newStr = str.slice(0, str.length - 2);
-    splitIntoTwo(newStr);
+    splitIntoTwos(newStr);
   }
-  // test splitIntoTwo function
-  splitIntoTwo(Binary1);
+  // test splitIntoTwos function
+  splitIntoTwos(Binary1);
+
   // console.log(bitsArr);
   // convert every two bit element into corresponding DNA base
-  function DNA(bitsArr) {
-    for (var i = 0; i < bitsArr.length; i++) {
+  const DNA = bitsArr => {
+    for (let i = 0; i < bitsArr.length; i++) {
         if (bitsArr[i] === '00') {
             bitsArr[i] = 'A';
         }
@@ -76,7 +87,7 @@ const convertDNAToASCII = (word) => {
             bitsArr[i] = 'T';
         }
     }
-    var dna = bitsArr.join("");
+    let dna = bitsArr.join("");
     // console.log(dna);
     return dna;
   }
@@ -84,38 +95,42 @@ const convertDNAToASCII = (word) => {
   return DNA(bitsArr);
 }
 
-const convertRNAToASCII = (word) => {
+const convertRNAToASCII = word => {
 
   // hold toASCII function results
-  var ASCIIArr = [];
+  const ASCIIArr = [];
   // converts characters in string to ASCII
-  function toASCII(input) {
-    for (var i = 0; i < input.length; i++) {
-        var ascii = input.charCodeAt(i);
+  const toASCII = input => {
+    for (let i = 0; i < input.length; i++) {
+        const ascii = input.charCodeAt(i);
         ASCIIArr.push(ascii);
     }
     // console.log(ASCIIArr);
     return ASCIIArr;
   }
+
   // testing toASCII function
-  var ASCII = toASCII(word);
+  let ASCII = toASCII(word);
   // console.log(ASCII);
+
   // holds toBinary function results
-  var binaryArr = [];
+  const binaryArr = [];
   // converts ASCII to binary
-  function toBinary(input) {
-    for (var i = 0; i < input.length; i++) {
-        var binary = input[i].toString(2);
+  const toBinary = input => {
+    for (let i = 0; i < input.length; i++) {
+        const binary = input[i].toString(2);
         binaryArr.push(binary);
         // console.log(binaryArr);
     }
     return binaryArr;
   }
+
   // test toBinary function
   toBinary(ASCIIArr);
+
   // format each binary result from binaryArr
-  function checkEven(input) {
-    for (var i = 0; i < input.length; i++) {
+  const checkEven = input => {
+    for (let i = 0; i < input.length; i++) {
         if (input[i].length % 2 !== 0) {
             input[i] = '0' + input[i];
         }
@@ -123,16 +138,19 @@ const convertRNAToASCII = (word) => {
     // console.log(input);
     return input;
   }
+
   // test checkEven function
   // console.log(binaryArr);
   checkEven(binaryArr);
+
   // combine all binary conversions for each character into one binary
-  var Binary1 = binaryArr.join("");
+  let Binary1 = binaryArr.join("");
   // console.log(Binary1);
-  // holds the results of splitIntoTwo function
+
+  // holds the results of splitIntoTwos function
   const bitsArr = [];
   // split binary number into two bit elements
-  function splitIntoTwo(str) {
+  const splitIntoTwos = str => {
     // End cases
     if (str.length <= 0) {
         return null;
@@ -141,14 +159,16 @@ const convertRNAToASCII = (word) => {
     bitsArr.push(str.slice(-2));
     //
     let newStr = str.slice(0, str.length - 2);
-    splitIntoTwo(newStr);
+    splitIntoTwos(newStr);
   }
-  // test splitIntoTwo function
-  splitIntoTwo(Binary1);
+
+  // test splitIntoTwos function
+  splitIntoTwos(Binary1);
+  
   // console.log(bitsArr);
   // convert every two bit element into corresponding DNA base
-  function DNA(bitsArr) {
-    for (var i = 0; i < bitsArr.length; i++) {
+  const DNA = bitsArr => {
+    for (let i = 0; i < bitsArr.length; i++) {
         if (bitsArr[i] === '00') {
             bitsArr[i] = 'A';
         }
@@ -162,7 +182,7 @@ const convertRNAToASCII = (word) => {
             bitsArr[i] = 'U';
         }
     }
-    var dna = bitsArr.join("");
+    let dna = bitsArr.join("");
     // console.log(dna);
     return dna;
   }
